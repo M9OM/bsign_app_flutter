@@ -35,7 +35,7 @@ void selectRecipient(String email) {
   int totalPages = 0;
   bool isLoading = false;
   bool fileUploaded = false;
-  String? _documentId;
+  String? documentId;
 
   List<SignatureField> fields = [];
   List<SignatureField> pendingFields = [];
@@ -86,8 +86,8 @@ void selectRecipient(String email) {
       if (currentUser == null) throw Exception('User not authenticated');
 
       final userId = currentUser.id;
-      final documentId = Uuid().v7();
-      _documentId = documentId;
+      final _documentId = Uuid().v7();
+      documentId = _documentId;
 
       final fileName = 'docs/${DateTime.now().millisecondsSinceEpoch}_${file.path.split('/').last}';
       final fileBytes = await file.readAsBytes();
@@ -105,9 +105,9 @@ void selectRecipient(String email) {
         id: documentId,
         name: file.path.split('/').last,
         pages: totalPages,
-        uploadedAt: DateTime.now().toUtc(),
-        fileUrl: fileUrl,
-        createdBy: userId,
+        uploaded_at: DateTime.now().toUtc(),
+        file_url: fileUrl,
+        created_by: userId,
       );
 
       await docProvider.createDocument(file: file, userId: userId, type: 'pdf', doc: newDoc);
@@ -145,9 +145,9 @@ void selectRecipient(String email) {
   }
 
   Future<void> loadSignatureFields(BuildContext context) async {
-    if (_documentId == null) return;
+    if (documentId == null) return;
     final signatureFieldProvider = Provider.of<SignatureFieldProvider>(context, listen: false);
-    await signatureFieldProvider.loadFields(_documentId!);
+    await signatureFieldProvider.loadFields(documentId!);
     fields = signatureFieldProvider.fields;
     notifyListeners();
   }

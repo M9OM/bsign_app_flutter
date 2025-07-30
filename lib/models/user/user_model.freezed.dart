@@ -22,9 +22,9 @@ AppUser _$AppUserFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$AppUser {
   String get id => throw _privateConstructorUsedError;
-  String get fullName => throw _privateConstructorUsedError;
+  String get full_name => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
-  DateTime? get createdAt => throw _privateConstructorUsedError;
+  DateTime? get created_at => throw _privateConstructorUsedError;
 
   /// Serializes this AppUser to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -40,7 +40,7 @@ abstract class $AppUserCopyWith<$Res> {
   factory $AppUserCopyWith(AppUser value, $Res Function(AppUser) then) =
       _$AppUserCopyWithImpl<$Res, AppUser>;
   @useResult
-  $Res call({String id, String fullName, String email, DateTime? createdAt});
+  $Res call({String id, String full_name, String email, DateTime? created_at});
 }
 
 /// @nodoc
@@ -59,9 +59,9 @@ class _$AppUserCopyWithImpl<$Res, $Val extends AppUser>
   @override
   $Res call({
     Object? id = null,
-    Object? fullName = null,
+    Object? full_name = null,
     Object? email = null,
-    Object? createdAt = freezed,
+    Object? created_at = freezed,
   }) {
     return _then(
       _value.copyWith(
@@ -70,20 +70,20 @@ class _$AppUserCopyWithImpl<$Res, $Val extends AppUser>
                     ? _value.id
                     : id // ignore: cast_nullable_to_non_nullable
                         as String,
-            fullName:
-                null == fullName
-                    ? _value.fullName
-                    : fullName // ignore: cast_nullable_to_non_nullable
+            full_name:
+                null == full_name
+                    ? _value.full_name
+                    : full_name // ignore: cast_nullable_to_non_nullable
                         as String,
             email:
                 null == email
                     ? _value.email
                     : email // ignore: cast_nullable_to_non_nullable
                         as String,
-            createdAt:
-                freezed == createdAt
-                    ? _value.createdAt
-                    : createdAt // ignore: cast_nullable_to_non_nullable
+            created_at:
+                freezed == created_at
+                    ? _value.created_at
+                    : created_at // ignore: cast_nullable_to_non_nullable
                         as DateTime?,
           )
           as $Val,
@@ -99,7 +99,7 @@ abstract class _$$AppUserImplCopyWith<$Res> implements $AppUserCopyWith<$Res> {
   ) = __$$AppUserImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String id, String fullName, String email, DateTime? createdAt});
+  $Res call({String id, String full_name, String email, DateTime? created_at});
 }
 
 /// @nodoc
@@ -117,9 +117,9 @@ class __$$AppUserImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = null,
-    Object? fullName = null,
+    Object? full_name = null,
     Object? email = null,
-    Object? createdAt = freezed,
+    Object? created_at = freezed,
   }) {
     return _then(
       _$AppUserImpl(
@@ -128,20 +128,20 @@ class __$$AppUserImplCopyWithImpl<$Res>
                 ? _value.id
                 : id // ignore: cast_nullable_to_non_nullable
                     as String,
-        fullName:
-            null == fullName
-                ? _value.fullName
-                : fullName // ignore: cast_nullable_to_non_nullable
+        full_name:
+            null == full_name
+                ? _value.full_name
+                : full_name // ignore: cast_nullable_to_non_nullable
                     as String,
         email:
             null == email
                 ? _value.email
                 : email // ignore: cast_nullable_to_non_nullable
                     as String,
-        createdAt:
-            freezed == createdAt
-                ? _value.createdAt
-                : createdAt // ignore: cast_nullable_to_non_nullable
+        created_at:
+            freezed == created_at
+                ? _value.created_at
+                : created_at // ignore: cast_nullable_to_non_nullable
                     as DateTime?,
       ),
     );
@@ -153,9 +153,9 @@ class __$$AppUserImplCopyWithImpl<$Res>
 class _$AppUserImpl implements _AppUser {
   const _$AppUserImpl({
     required this.id,
-    required this.fullName,
+    required this.full_name,
     required this.email,
-    this.createdAt,
+    this.created_at,
   });
 
   factory _$AppUserImpl.fromJson(Map<String, dynamic> json) =>
@@ -164,15 +164,15 @@ class _$AppUserImpl implements _AppUser {
   @override
   final String id;
   @override
-  final String fullName;
+  final String full_name;
   @override
   final String email;
   @override
-  final DateTime? createdAt;
+  final DateTime? created_at;
 
   @override
   String toString() {
-    return 'AppUser(id: $id, fullName: $fullName, email: $email, createdAt: $createdAt)';
+    return 'AppUser(id: $id, full_name: $full_name, email: $email, created_at: $created_at)';
   }
 
   @override
@@ -181,16 +181,17 @@ class _$AppUserImpl implements _AppUser {
         (other.runtimeType == runtimeType &&
             other is _$AppUserImpl &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.fullName, fullName) ||
-                other.fullName == fullName) &&
+            (identical(other.full_name, full_name) ||
+                other.full_name == full_name) &&
             (identical(other.email, email) || other.email == email) &&
-            (identical(other.createdAt, createdAt) ||
-                other.createdAt == createdAt));
+            (identical(other.created_at, created_at) ||
+                other.created_at == created_at));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, id, fullName, email, createdAt);
+  int get hashCode =>
+      Object.hash(runtimeType, id, full_name, email, created_at);
 
   /// Create a copy of AppUser
   /// with the given fields replaced by the non-null parameter values.
@@ -209,9 +210,9 @@ class _$AppUserImpl implements _AppUser {
 abstract class _AppUser implements AppUser {
   const factory _AppUser({
     required final String id,
-    required final String fullName,
+    required final String full_name,
     required final String email,
-    final DateTime? createdAt,
+    final DateTime? created_at,
   }) = _$AppUserImpl;
 
   factory _AppUser.fromJson(Map<String, dynamic> json) = _$AppUserImpl.fromJson;
@@ -219,11 +220,11 @@ abstract class _AppUser implements AppUser {
   @override
   String get id;
   @override
-  String get fullName;
+  String get full_name;
   @override
   String get email;
   @override
-  DateTime? get createdAt;
+  DateTime? get created_at;
 
   /// Create a copy of AppUser
   /// with the given fields replaced by the non-null parameter values.

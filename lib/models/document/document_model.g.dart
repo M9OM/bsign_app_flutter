@@ -11,13 +11,13 @@ _$DocumentImpl _$$DocumentImplFromJson(Map<String, dynamic> json) =>
       id: json['id'] as String?,
       name: json['name'] as String,
       pages: (json['pages'] as num).toInt(),
-      fileUrl: json['fileUrl'] as String,
-      uploadedAt:
-          json['uploadedAt'] == null
+      file_url: json['file_url'] as String,
+      uploaded_at:
+          json['uploaded_at'] == null
               ? null
-              : DateTime.parse(json['uploadedAt'] as String),
+              : DateTime.parse(json['uploaded_at'] as String),
       type: json['type'] as String?,
-      createdBy: json['createdBy'] as String?,
+      created_by: json['created_by'] as String?,
     );
 
 Map<String, dynamic> _$$DocumentImplToJson(_$DocumentImpl instance) =>
@@ -25,8 +25,8 @@ Map<String, dynamic> _$$DocumentImplToJson(_$DocumentImpl instance) =>
       'id': instance.id,
       'name': instance.name,
       'pages': instance.pages,
-      'fileUrl': instance.fileUrl,
-      'uploadedAt': instance.uploadedAt?.toIso8601String(),
+      'file_url': instance.file_url,
+      'uploaded_at': instance.uploaded_at?.toIso8601String(),
       'type': instance.type,
-      'createdBy': instance.createdBy,
+      'created_by': instance.created_by,
     };

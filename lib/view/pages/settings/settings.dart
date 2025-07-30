@@ -46,7 +46,7 @@ class _SettingsPageState extends State<SettingsPage> {
                   ),
                   backgroundColor: Colors.transparent,
                 ),
-                title:  Text(auth.userModel!.fullName ?? 'Mohammed Saeed'),
+                title:  Text(auth.userModel!.full_name ?? 'Mohammed Saeed'),
                 subtitle:  Text(auth.userModel!.email ?? '----'),
 
                 onTap: () {},

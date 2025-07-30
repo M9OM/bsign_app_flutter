@@ -8,10 +8,10 @@ class Document with _$Document {
      String? id,
     required String name,
     required int pages,
-    required String fileUrl,
-    DateTime? uploadedAt,
+    required String file_url,
+    DateTime? uploaded_at,
     String? type, // e.g., 'pdf', 'image'
-    String? createdBy, // user_id
+    String? created_by, // user_id
   }) = _Document;
 
   factory Document.fromJson(Map<String, dynamic> json) => _$DocumentFromJson(json);

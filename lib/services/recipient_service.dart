@@ -5,17 +5,17 @@ class RecipientService {
   final _client = Supabase.instance.client;
 
   Future<void> addRecipient(Recipient recipient) async {
-    await _client.from('recipients').insert(recipient.toJson());
+    await _client.from('document_recipients').insert(recipient.toJson());
   }
 
   Future<List<Recipient>> fetchRecipientsForSession(String sessionId) async {
     final response = await _client
         .from('signing_session_recipients')
-        .select('recipient_id, recipients(*)')
+        .select('recipient_id, document_recipients(*)')
         .eq('session_id', sessionId);
 
     return (response as List)
-        .map((e) => Recipient.fromJson(e['recipients']))
+        .map((e) => Recipient.fromJson(e['document_recipients']))
         .toList();
   }
 }

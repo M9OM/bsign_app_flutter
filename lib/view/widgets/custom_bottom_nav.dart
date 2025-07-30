@@ -1,5 +1,5 @@
 import 'package:bsign/core/config/constants.dart';
-import 'package:bsign/view/widgets/dialogs/blur_action_sheet.dart';
+import 'package:bsign/view/widgets/dialogs/enhanced_blur_action_sheet.dart';
 import 'package:flutter/material.dart';
 import 'package:hugeicons/hugeicons.dart';
 
@@ -16,7 +16,7 @@ class CustomBottomNav extends StatelessWidget {
 
   void _handleTap(BuildContext context, int index) {
     if (index == AppConstants.navActionButtonIndex) {
-      BlurActionSheet.show(context);
+      EnhancedBlurActionSheet.show(context);
     } else {
       onTap(index);
     }

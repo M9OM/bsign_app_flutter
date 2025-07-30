@@ -22,10 +22,11 @@ class DocumentProvider with ChangeNotifier {
 Widget getDocumentPage(Document doc) {
   return DocumentViewScreen(
     documentId: doc.id!,
-    filePath: doc.fileUrl, // هذا الرابط المباشر من Supabase
+    filePath: doc.file_url, // Direct URL from Supabase
     totalPages: doc.pages,
   );
 }
+
   Future<void> loadDocuments(String ownerId) async {
     _isLoading = true;
     notifyListeners();
@@ -40,6 +41,19 @@ Widget getDocumentPage(Document doc) {
     notifyListeners();
   }
 
+  Future<void> loadUserDocuments(String userId) async {
+    _isLoading = true;
+    notifyListeners();
+
+    try {
+      _documents = await _service.fetchUserDocuments(userId);
+    } catch (e) {
+      debugPrint('Error loading user documents: $e');
+    }
+
+    _isLoading = false;
+    notifyListeners();
+  }
   Future<void> createDocument({
     required File file,
     required String userId,
@@ -56,8 +70,11 @@ Widget getDocumentPage(Document doc) {
         type: type,
         doc: doc,
       );
+      
+      // Refresh documents list
+      await loadDocuments(userId);
     } catch (e) {
-      debugPrint('خطأ أثناء رفع الملف: $e');
+      debugPrint('Error uploading file: $e');
       rethrow;
     } finally {
       _isUploading = false;
@@ -65,4 +82,7 @@ Widget getDocumentPage(Document doc) {
     }
   }
 
+  Future<void> refreshDocuments(String userId) async {
+    await loadDocuments(userId);
+  }
 }

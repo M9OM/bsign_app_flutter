@@ -19,18 +19,17 @@ class ActivityTile extends StatelessWidget {
     return SizedBox(
       child: Container(
         padding: const EdgeInsets.all(16),
-    decoration: BoxDecoration(
-      border: Border.all(width: 1, color: Colors.grey.withOpacity(0.3)),
+        decoration: BoxDecoration(
+          border: Border.all(width: 1, color: Colors.grey.withOpacity(0.3)),
           color: Colors.grey.withOpacity(0.1),
-      borderRadius: BorderRadius.circular(12),
-
-    ),
+          borderRadius: BorderRadius.circular(12),
+        ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(
               children: [
-                Icon(icon),
+                Icon(icon, color: Theme.of(context).primaryColor),
                 const Spacer(),
                 Text(
                   count,
@@ -49,6 +48,16 @@ class ActivityTile extends StatelessWidget {
               style: const TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.w600,
+              ),
+            ),
+            const SizedBox(height: 4),
+            Text(
+              description,
+              maxLines: 2,
+              overflow: TextOverflow.ellipsis,
+              style: TextStyle(
+                fontSize: 12,
+                color: Colors.grey[600],
               ),
             ),
 
