@@ -49,6 +49,20 @@ void selectRecipient(String email) {
     notifyListeners();
   }
 
+  /// NEW: Remove recipient from local list
+  void removeRecipientLocally(int index) {
+    if (index >= 0 && index < recipients.length) {
+      recipients.removeAt(index);
+      notifyListeners();
+    }
+  }
+
+  /// NEW: Clear all recipients
+  void clearRecipients() {
+    recipients.clear();
+    notifyListeners();
+  }
+
   Future<void> initialize(BuildContext context) async {
     final attachmentProvider = Provider.of<AttachmentProvider>(context, listen: false);
     if (attachmentProvider.selectedFiles.isEmpty) return;

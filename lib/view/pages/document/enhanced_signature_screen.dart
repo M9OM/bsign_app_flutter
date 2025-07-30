@@ -161,67 +161,70 @@ class _EnhancedSignatureScreenState extends State<EnhancedSignatureScreen> {
       body: Column(
         children: [
           // Recipients list for request signing
-          if (logic.type == SignType.requestSign && logic.recipients.isNotEmpty)
+          if (logic.type == SignType.requestSign)
             Container(
-              height: 90,
+              height: logic.recipients.isEmpty ? 50 : 90,
               padding: const EdgeInsets.symmetric(vertical: 8),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Padding(
+                  Padding(
                     padding: EdgeInsets.symmetric(horizontal: 16),
                     child: Text(
-                      'Recipients',
+                      logic.recipients.isEmpty 
+                          ? 'No recipients added yet' 
+                          : 'Recipients (${logic.recipients.length})',
                       style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
                     ),
                   ),
                   const SizedBox(height: 4),
-                  Expanded(
-                    child: ListView.builder(
-                      scrollDirection: Axis.horizontal,
-                      padding: const EdgeInsets.symmetric(horizontal: 16),
-                      itemCount: logic.recipients.length,
-                      itemBuilder: (context, index) {
-                        final recipient = logic.recipients[index];
-                        final isSelected = logic.emailSelected == recipient.user_email;
+                  if (logic.recipients.isNotEmpty)
+                    Expanded(
+                      child: ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        padding: const EdgeInsets.symmetric(horizontal: 16),
+                        itemCount: logic.recipients.length,
+                        itemBuilder: (context, index) {
+                          final recipient = logic.recipients[index];
+                          final isSelected = logic.emailSelected == recipient.user_email;
 
-                        return GestureDetector(
-                          onTap: () => logic.selectRecipient(recipient.user_email),
-                          child: Container(
-                            width: 70,
-                            margin: const EdgeInsets.only(right: 12),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                CircleAvatar(
-                                  radius: 20,
-                                  backgroundColor: isSelected 
-                                      ? Theme.of(context).primaryColor 
-                                      : Colors.grey.shade300,
-                                  child: Text(
-                                    recipient.name[0].toUpperCase(),
-                                    style: TextStyle(
-                                      fontSize: 16,
-                                      color: isSelected ? Colors.white : Colors.black,
-                                      fontWeight: FontWeight.bold,
+                          return GestureDetector(
+                            onTap: () => logic.selectRecipient(recipient.user_email),
+                            child: Container(
+                              width: 70,
+                              margin: const EdgeInsets.only(right: 12),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  CircleAvatar(
+                                    radius: 20,
+                                    backgroundColor: isSelected 
+                                        ? Theme.of(context).primaryColor 
+                                        : Colors.grey.shade300,
+                                    child: Text(
+                                      recipient.name[0].toUpperCase(),
+                                      style: TextStyle(
+                                        fontSize: 16,
+                                        color: isSelected ? Colors.white : Colors.black,
+                                        fontWeight: FontWeight.bold,
+                                      ),
                                     ),
                                   ),
-                                ),
-                                const SizedBox(height: 4),
-                                Text(
-                                  recipient.name,
-                                  style: const TextStyle(fontSize: 11),
-                                  maxLines: 1,
-                                  overflow: TextOverflow.ellipsis,
-                                  textAlign: TextAlign.center,
-                                ),
-                              ],
+                                  const SizedBox(height: 4),
+                                  Text(
+                                    recipient.name,
+                                    style: const TextStyle(fontSize: 11),
+                                    maxLines: 1,
+                                    overflow: TextOverflow.ellipsis,
+                                    textAlign: TextAlign.center,
+                                  ),
+                                ],
+                              ),
                             ),
-                          ),
-                        );
-                      },
+                          );
+                        },
+                      ),
                     ),
-                  ),
                 ],
               ),
             ),
