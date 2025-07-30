@@ -75,27 +75,27 @@ class _EnhancedAddRecipientScreenState extends State<EnhancedAddRecipientScreen>
                   ),
                 ),
               const SizedBox(height: 12),
-              // SizedBox(
-              //   width: double.infinity,
-              //   child: CustomButton(
-              //     onPressed: signatureProvider.recipients.isEmpty
-              //         ? null
-              //         : () {
-              //             Navigator.push(
-              //               context,
-              //               MaterialPageRoute(
-              //                 builder: (_) => ChangeNotifierProvider.value(
-              //                   value: signatureProvider,
-              //                   child: const EnhancedSignatureScreen(),
-              //                 ),
-              //               ),
-              //             );
-              //           },
-              //     label: 'Continue to Add Fields',
-              //     color: Theme.of(context).primaryColor,
-              //     isLoading: false,
-              //   ),
-              // ),
+              SizedBox(
+                width: double.infinity,
+                child: CustomButton(
+                  onPressed: signatureProvider.recipients.isEmpty
+                      ? null
+                      : () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (_) => ChangeNotifierProvider.value(
+                                value: signatureProvider,
+                                child: const EnhancedSignatureScreen(),
+                              ),
+                            ),
+                          );
+                        },
+                  label: 'Continue to Add Fields',
+                  color: Theme.of(context).primaryColor,
+                  isLoading: false,
+                ),
+              ),
             ],
           ),
         ),
